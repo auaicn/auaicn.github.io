@@ -4,11 +4,35 @@
         <link rel="stylesheet" href="index.css"/>
         <link rel="shortcut icon" href="favicon.ico"/>
         <script type="text/javascript" src="index.js"></script>
-
+        <style>
+            input[id="menuicon"] {display:none;}
+            input[id="menuicon"] + label {display:block;margin:30px;width:60px;height:50px;position:relative;cursor:pointer;}
+            input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:#000;transition:all .35s;}
+            input[id="menuicon"] + label span:nth-child(1) {top:0;}
+            input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* ºñ½ÁÇÏ°Ô »ç¿ëÇÒ ¼ö ÀÖ´Â style top:calc(50% - 2.5px); margin-top:-2.5px;*/
+            input[id="menuicon"] + label span:nth-child(3) {bottom:0;}
+            input[id="menuicon"]:checked + label {z-index:2;}
+            input[id="menuicon"]:checked + label span {background:#fff;}
+            input[id="menuicon"]:checked + label span:nth-child(1) {top:50%;transform:translateY(-50%) rotate(45deg);}
+            input[id="menuicon"]:checked + label span:nth-child(2) {opacity:0;}
+            input[id="menuicon"]:checked + label span:nth-child(3) {bottom:50%;transform:translateY(50%) rotate(-45deg);}
+            
+            div[class="sidebar"] {width:300px;height:100%;background:#222;position:fixed;top:0;left:-300px;z-index:1;transition:all .35s;}
+            input[id="menuicon"]:checked + label + div {left:0;}
+        </style>
     </head>
     <body>
-        Thx for Visiting!<br>
-        created on <span id = "createdDate">aaaa</span>
+        <input type="checkbox" id ="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class = "sidebar"></div>
+
+        <p>Thx for Visiting!<br>
+        created on <span id = "createdDate">aaaa</span></p>
+
 
         <script>
             document.getElementById('createdDate').textContent = initial_date
